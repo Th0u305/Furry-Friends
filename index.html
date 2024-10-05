@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pet Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css"/>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  </head>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#131313',
+                        secondary: '#13131399',
+                        btn_colr: '#0E7A81'
+                    },
+                    fontFamily: {
+                        lato: "lato",
+                    },
+                },
+            },
+        }
+    </script>
+
+<body class="font-lato mt-12">
+    <main class="container mx-auto">
+        <div class="navbar bg-base-100">
+            <div class="navbar-start gap-2">
+              <img src="images/logo.webp" alt="">
+              <p class="font-bold text-3xl">Peddy</p>
+            </div>
+            <div class="navbar-center hidden lg:flex">
+              <ul class="menu menu-horizontal px-1">
+                <li class="text-lg font-semibold text-secondary"><a>Home</a></li>
+                <li class="text-lg font-semibold text-secondary"><a>Shop</a></li>
+                <li class="text-lg font-semibold text-secondary"><a>Contact</a></li>
+              </ul>
+            </div>
+            <div class="navbar-end ">
+                <div class="">
+                    <img src="images/Frame 4.png" alt="">
+                </div>
+            </div>
+          </div>
+
+        <section class="mt-12">
+            <div class="flex flex-col justify-center items-center text-center gap-5">
+                <h2 class="text-2xl font-bold text-secondary">Bringing Families Together</h2>
+                <h1 class="text-4xl font-bold text-primary">Bringing Families Together</h1>
+                <p class="w-1/2 text-primary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <button class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">View more</button>
+                <div class="mt-12">
+                    <img src="images/pet.webp" alt="">
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-12">
+            <div class="flex flex-col justify-center items-center text-center gap-5">
+                <h1 class="text-primary text-4xl font-bold">Adopt &nbsp; Your &nbsp;  Best &nbsp; Friend</h1>
+                <p class="text-secondary w-1/2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+            </div>
+        </section>
+        <section class="mt-16">
+            
+            <div id="petsCategoryContainer" class="flex items-center justify-center space-x-12">
+            </div>
+
+            <div class="flex flex-row items-center justify-between mt-12">
+                <h1 class="text-2xl font-bold text-primary">Best Deal For you</h1>
+                <button class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">Sort By Price</button>
+            </div>
+        </section>
+
+    </main>
+    <footer class="bg-primary mt-12">
+        <div class="flex flex-row justify-between items-center container mx-auto py-20">
+            <div class="space-y-5">
+                <div class="flex flex-row items-center justify-start gap-2">
+                    <img src="images/logo.webp" alt="">
+                    <p class="font-bold text-3xl text-white">Peddy</p>
+                </div>
+                <div class="text-white space-y-5">
+                    <p>Location: av. Washington 165, NY CA 54003</p>
+                    <p>Phone: +31 85 964 47 25 </p>
+                    <p>Email: info@yourdomain.com </p>
+                    <p>Openings hours: 9.00 AM - 5.00 PM</p>
+                </div>
+                <div class="flex flex-row gap-3">
+                    <img src="images/fb.png" alt="">
+                    <img src="images/x.png" alt="">
+                    <img src="images/tube.png" alt="">
+                    <img src="images/insta.png" alt="">
+                </div>
+            </div>
+            
+
+            <div class="text-white space-y-5">
+                <ul class="list-none space-y-5">
+                    <h1 class="font-semibold text-xl">Useful Links</h1>
+                    <li><a href=""></a>Home</li>
+                    <li><a href=""></a>About Us</li>
+                    <li><a href=""></a>Animals</li>
+                    <li><a href=""></a>Contact</li>
+                </ul>
+            </div>
+
+            <div class="text-white space-y-5">
+                <h1 class="font-bold text-xl mb-10">Drop a Message</h1>
+                <input type="text" placeholder="Enter your email" class="input input-bordered w-full rounded-2xl bg-gray-600 placeholder-white" />
+                <button class="btn btn-wide w-full bg-btn_colr border-none text-white text-lg rounded-2xl">Wide</button>
+            </div>
+
+        </div>
+    </footer>
+    <script src="js/pet.js"></script>
+</body>
+</html>
