@@ -13,6 +13,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
+    <link rel="stylesheet" href="styles.css">
+
   </head>
 
     <script>
@@ -31,6 +33,7 @@
             },
         }
     </script>
+
 
 <body class="font-lato mt-12">
     <main class="container mx-auto">
@@ -58,13 +61,13 @@
                 <h2 class="text-2xl font-bold text-secondary">Bringing Families Together</h2>
                 <h1 class="text-4xl font-bold text-primary">Bringing Families Together</h1>
                 <p class="w-1/2 text-primary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
-                <button class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">View more</button>
+                <button onclick="scrollToPets()" class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">View more</button>
                 <div class="mt-12">
                     <img src="images/pet.webp" alt="">
                 </div>
             </div>
         </section>
-
+        
         <section class="mt-12">
             <div class="flex flex-col justify-center items-center text-center gap-5">
                 <h1 class="text-primary text-4xl font-bold">Adopt &nbsp; Your &nbsp;  Best &nbsp; Friend</h1>
@@ -72,14 +75,65 @@
             </div>
         </section>
         <section class="mt-16">
-            
             <div id="petsCategoryContainer" class="flex items-center justify-center space-x-12">
             </div>
-
             <div class="flex flex-row items-center justify-between mt-12">
                 <h1 class="text-2xl font-bold text-primary">Best Deal For you</h1>
-                <button class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">Sort By Price</button>
+                <button id="sortBtn" onclick="sortPrice(id)" class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">Sort By Price</button>
             </div>
+            <div id="pets-shop" class="flex flex-row justify-center items-start mt-12 gap-8">
+                
+
+                <div id="pets-cards" class="grid grid-cols-3 gap-8 w-[80%]">
+                </div>
+                <span id="spinner" class="hidden loading loading-spinner loading-lg"></span>
+                <div id="pet-like-pic" class="rounded-2xl grid grid-cols-2 grid-rows-1 w-[30%] gap-5">
+                
+                    
+                </div>
+    
+            </div>
+            
+            
+
+            <!-- modal  -->
+
+            <button id="shodModal" class="btn hidden" onclick="petModal.showModal()">open modal</button>
+            <dialog id="petModal" class="modal">
+                <div class="modal-box">
+                    <div id="modal-content"></div>
+                    <div class="modal-action">
+                        <form class="w-full" method="dialog">
+                          <!-- if there is a button in form, it will close the modal -->
+                          <button class="btn w-full bg-[#0e7a811a] border-2 border-[rgba(14,122,129,0.2)] text-[#0E7A81] text-lg">Close</button>
+                        </form>
+                    </div>
+                </div>
+            </dialog>
+
+
+            <!-- timer modal  -->
+
+
+
+            <!-- <button id="timeModal" class="btn " onclick="timer.showModal()">open modal</button> -->
+
+            <button class="btn hidden" onclick="showTimeModal()">Open Modal</button>
+      
+            <!-- Modal Structure -->
+            <dialog id="timer" class="modal">
+              <div class="modal-box">
+                <div class="modal-action flex flex-col items-center justify-center gap-5">
+                  <img src="images/hand.gif" alt="">
+                  <h1 class="text-5xl font-bold">Congrats</h1>
+                  <p>Adoption Process Has Started For Your Pet</p>
+                  <div id="countdown" class="text-4xl font-bold">3</div>
+                  <form method="dialog">
+                    <span onclick="closeModal()"></span>
+                  </form>
+                </div>
+              </div>
+            </dialog>
         </section>
 
     </main>
