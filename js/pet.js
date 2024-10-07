@@ -11,7 +11,8 @@ const loadAll = (id) =>{
     fetch (`https://openapi.programming-hero.com/api/peddy/category/${id}`)
     .then (res => res.json())
     .then(data => petContainer(data.data))
-    .catch((error) => console.log(error));  
+    .catch((error) => console.log(error));
+
     document.getElementById('pets-cards').style.display = "grid"
     document.getElementById('pet-like-pic').style.display = "grid"
     document.getElementById('vanish').style.display = "block"
@@ -34,7 +35,6 @@ const displayCategory = (categories) =>{
     const petsCategoryContainer = document.getElementById('petsCategoryContainer');
     categories.forEach((item) => {
         document.getElementById('spinner').style.display="none";
-        //create a button
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = 
         
@@ -72,6 +72,7 @@ const likedImages = (id) =>{
 
 
 const petContainer = (petContents) => {
+    const sortBtn = document.getElementById('sortBtn'); 
     const petCards = document.getElementById("pets-cards")
     petCards.innerHTML = "" ;
     if(petContents.length == 0){
@@ -91,8 +92,8 @@ const petContainer = (petContents) => {
             `
         return ;
     }
-    
-    petContents.forEach((content) => {
+
+    petContents.forEach((content) => { 
         const card = document.createElement('div')
         card.classList = "card card-compact border-2 p-6 space-y-5"
         card.innerHTML = 
@@ -154,7 +155,6 @@ const petDetails =  async (petId) =>{
 }
 
 const displayDetails = (petData) =>{
-  
     const detailsContainer = document.getElementById('modal-content');
     detailsContainer.innerHTML = 
 
@@ -259,69 +259,20 @@ const resetCountdown = () => {
 
 
 
-const  sortPrice = async () => {
+const  sortPrice = async (id) => {
     const petsContainer = document.getElementById('pets-cards');
     petsContainer.innerHTML = '';
+    console.log(id);
+    
 
     try {
     
-      const response = await fetch('https://openapi.programming-hero.com/api/peddy/pets'); // Replace with your API URL
+      const response = await fetch('https://openapi.programming-hero.com/api/peddy/pets');
       const data = await response.json();
-    
 
       const sortedPets = data.pets.sort((a, b) => b.price - a.price);
+      petContainer(sortedPets)
 
-      sortedPets.forEach(pets => {
-        const petsCard = document.createElement('div');
-        petsCard.className = 'p-8 border-2 rounded-2xl';
-        
-        petsCard.innerHTML = `
-
-            <figure>
-                <img src=${pets.image} class="h-full w-full object-cover rounded-xl"/>
-            </figure>
-            
-            <div id = "destination" class="space-y-5">
-                <div class = "space-y-5">
-
-                    <div>
-                        <h1 class = "text-3xl font-semibold"> ${pets.pet_name}
-                    </div>
-                    
-                    <div class = "">  
-                        <div class = "flex flex-row justify-start items-center space-x-2">
-                            <img src="images/menu.png" alt="" class = "w-7">
-                            <p class = "">Breed: ${pets.breed == null || pets.breed.length === 0 ? "Data Not Found" : pets.breed}</p> 
-                        </div>
-                        <div class = "flex flex-row justify-start items-center space-x-2">
-                            <img src="images/calender.png" alt="" class = "w-8">
-                            <p class = "">Date: ${pets.date_of_birth == null || pets.date_of_birth.length === 0 ? "Data Not Found" : pets.date_of_birth}</p> 
-                        </div>
-                        <div class = "flex flex-row justify-start items-center space-x-2">
-                            <img src="images/gender.png" alt="" class = "w-7">
-                            <p class = "">Gender: ${pets.gender == null || pets.gender.length === 0 ? "Data Not Found" : pets.gender}</p> 
-                        </div>
-                        <div class = "flex flex-row justify-start items-center space-x-2">
-                            <img src="images/money.png" alt="" class = "w-7">
-                            <p class = "">Price: ${pets.price == null || pets.price.length === 0 ? "Data Not Found" : pets.price}</p> 
-                        </div>
-                        
-                    </div>
-
-                </div>
-                <div class = "border-[1px]  ">
-                    </div>
-                <div class = "flex flex-row justify-between items-center">
-                
-                    <button onclick = "likedImages('${pets.image}')" class = "btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12"><img src="images/like.png" alt="" class = "w-8"></Button>
-                    <button onclick="showTimeModal()" class = "btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 text-xl font-semibold">Adopt</Button>
-                    <button onclick = "petDetails(${pets.petId})" class = " btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 text-xl font-semibold">Details</Button>
-                </div>
-            </div>
-    
-        `;
-        petsContainer.appendChild(petsCard);
-      });
     } catch (error) {
       console.error('Error fetching data:', error);
       petsContainer.innerHTML = '<p>Error loading data. Please try again.</p>';
