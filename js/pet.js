@@ -14,6 +14,7 @@ const loadAll = (id) =>{
     .catch((error) => console.log(error));  
     document.getElementById('pets-cards').style.display = "grid"
     document.getElementById('pet-like-pic').style.display = "grid"
+    document.getElementById('vanish').style.display = "block"
     document.getElementById('spinner').style.display="none";
 
 }
@@ -21,6 +22,7 @@ const loadAll = (id) =>{
 const loadCategoryImages = (id) =>{
     document.getElementById('pets-cards').style.display = "none"
     document.getElementById('pet-like-pic').style.display = "none"
+    document.getElementById('vanish').style.display = "none"
     document.getElementById('spinner').style.display="block";
 
     setTimeout(function ()  {
@@ -35,10 +37,14 @@ const displayCategory = (categories) =>{
         //create a button
         const buttonContainer = document.createElement("div");
         buttonContainer.innerHTML = 
+        
         `
             <button id = "btn-load" onclick = "loadCategoryImages('${item.category}'); "  
-                class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg h-[5em] w-[14.5em]  rounded-3xl border-2 border-[#0e7a8126] text-2xl bg-white shadow-none"> <img class = "w-14" 
-                src="${item.category_icon}" alt=""> ${item.category}</button>
+                class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg h-[5em] w-[8em] md:w-[12em] 2xl:w-[14em]
+                rounded-3xl border-2 border-[#0e7a8126] text-2xl bg-white shadow-none"> <img class = "w-14" 
+                src="${item.category_icon}" alt=""> ${item.category}
+            </button>
+           
         `;
         petsCategoryContainer.append(buttonContainer)
       });
@@ -69,16 +75,17 @@ const petContainer = (petContents) => {
     const petCards = document.getElementById("pets-cards")
     petCards.innerHTML = "" ;
     if(petContents.length == 0){
-        document.getElementById('pets-cards').style.display = "flex"
+        document.getElementById('pets-cards').style.display = "grid"
         petCards.innerHTML = 
 
             `
-                <div  class = "flex flex-col items-center justify-center text-center gap-5 rounded-2xl bg-gray-200">
+                <div  class = "flex flex-col items-center justify-center p-8 rounded-2xl bg-gray-200 col-span-full row-span-full">
                     <img src="images/error.webp" alt="">
                     <h1 class = "text-3xl font-bold"> No Information Available </h1>
-                    <p class = "w-1/2 font-semibold">
-                       It is a long established fact that a reader will be distracted by the readable content of a page when looking at 
-                       its layout. The point of using Lorem Ipsum is that it has a.
+                    <p class = "w-[90%] font-semibold">
+                       We apologize, but no information is currently available for this page. 
+                       The content you are looking for might not exist, has been moved, or is temporarily unavailable.
+                        Please try again later or explore other sections of the site for related information.
                     <p/>
                 </div>
             `
