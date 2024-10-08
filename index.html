@@ -38,30 +38,43 @@
 
 <body class="font-lato mt-12 mx-auto ">
     <main class="container mx-auto p-5">
-        <div class="navbar bg-base-100 justify-center items-center">
-            <div class="navbar-start gap-2">
-              <img src="images/logo.webp" alt="">
-              <p class="font-bold text-3xl">Peddy</p>
-            </div>
-            <div class="navbar-center hidden lg:flex">
-              <ul class="menu menu-horizontal px-1">
-                <li class="text-lg font-semibold text-secondary"><a>Home</a></li>
-                <li class="text-lg font-semibold text-secondary"><a>Shop</a></li>
-                <li class="text-lg font-semibold text-secondary"><a>Contact</a></li>
-              </ul>
-            </div>
-            <div class="navbar-end ">
-                <div class="">
+        <header>
+            <div class="navbar bg-base-100 ">
+                <div class="navbar-start w-full md:w-1/2 justify-between md:justify-start ">
+                    <div class="dropdown border-2 rounded-full">
+                        <div tabindex="0" role="button" class="btn btn-ghost md:hidden">
+                            <i class="fa-solid fa-bars fa-lg"></i>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-64 h-60 p-2 shadow items-center justify-evenly bg-[#00000071] backdrop-blur-sm">
+                            <li class="text-2xl text-white font-bold"><a>Home</a></li>
+                            <li class="text-2xl text-white font-bold"><a>Shop</a></li>
+                            <li class="text-2xl text-white font-bold"><a>Contract</a></li>
+                        </ul>
+                    </div>
+                    <div class="flex flex-row justify-center items-center gap-2">
+                        <img src="images/logo.webp" alt="">
+                        <p class="font-bold text-3xl">Peddy</p>
+                    </div>
+                </div>
+                <div class="navbar-center hidden md:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li class="text-xl text-secondary font-bold"><a>Home</a></li>
+                        <li class="text-xl text-secondary font-bold"><a>Shop</a></li>
+                        <li class="text-xl text-secondary font-bold"><a>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
                     <img src="images/Frame 4.png" alt="">
                 </div>
             </div>
-        </div>
+        </header>
 
         <section class="mt-12 ">
             <div class="flex flex-col justify-center items-center text-center gap-5">
                 <h2 class="text-2xl font-bold text-secondary">Bringing Families Together</h2>
                 <h1 class="text-4xl font-bold text-primary">Bringing Families Together</h1>
-                <p class="w-[90%] text-primary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <p class="text-secondary w-[80%] text-lg font-bold">Your one-stop shop for all your furry friends' needs. From food and toys to grooming and boarding, we have everything to keep your pets happy and healthy.</p>
                 <button onclick="scrollToPets()" class="btn bg-btn_colr text-white text-xl h-[3em] w-[8em] 
                         hover:bg-btn_colr transition-all duration-300 ease-in-out hover:scale-110">View more</button>
                 <div class="mt-12">
@@ -72,27 +85,30 @@
         
         <section class="mt-12">
             <div class="flex flex-col justify-center items-center text-center gap-5">
-                <h1 class="text-primary text-4xl font-bold w-[80%]">Adopt &nbsp; Your &nbsp;  Best &nbsp; Friend</h1>
-                <p class="text-secondary w-[90%]">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <h1 class="text-primary text-4xl font-bold w-[80%]">Adopt Your Best Friend</h1>
+                <p class="text-secondary w-[80%] text-lg font-bold">Looking for a new furry companion? We offer a variety of adorable animals for adoption. Come visit us and find your perfect match.</p>
             </div>
         </section>
         <section class="mt-16">
             <div id="petsCategoryContainer" class="grid grid-cols-2 justify-items-center gap-5 lg:grid-cols-4 ">
             </div>
             <div id="sort-container" class="flex flex-row items-center justify-between mt-12 p-5">
-                <h1 class="text-3xl font-bold text-primary">Best Deal For you</h1>
-                <button id="categorySortBtn" onclick="sortPrice() ; sortPriceByCategory()" class="btn bg-btn_colr text-white text-xl h-[3em]
-                        hover:bg-btn_colr transition-all duration-300 ease-in-out hover:scale-110">Sort By Price</button>
+                <div class="flex flex-col w-full justify-center items-center gap-8 md:flex-row md:gap-0 md:justify-between">
+                    <h1 class="text-3xl font-bold text-primary text-left">Best Deal For you</h1>
+                    <button id="categorySortBtn" onclick="sortPrice() ; sortPriceByCategory()" class="btn bg-btn_colr text-white text-xl h-[3em]
+                            hover:bg-btn_colr transition-all duration-300 ease-in-out hover:scale-110">Sort By Price
+                    </button>
+                </div>
             </div>
             <div id="pets-shop" class="flex flex-col 2xl:flex-row justify-center items-center 2xl:items-start text-center mt-12 gap-8">
                 
-                <div id="pets-cards" class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 w-full md:w-[90%] lg:w-full"></div>
+                <div id="pets-cards" class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 w-full "></div>
 
-                <span id="spinner" class="hidden loading loading-spinner  loading-lg w-[3.5em]"></span>
+                <span id="spinner" class="hidden loading loading-spinner  loading-lg w-[3em]"></span>
 
-                <div id="vanish" class="h-[60vh] border-2 w-[47vh] md:w-[90vh] lg:w-[100vh] lg:h-[118vh] 2xl:w-[60vh] overflow-y-scroll rounded-2xl p-5">
+                <div id="vanish" class="border-2 rounded-2xl p-5 w-full justify-center 2xl:w-4/12 h-[60vh] overflow-y-auto">
                     <h1 class="text-3xl font-bold mt-5 mb-5">Liked Pictures</h1>
-                    <div id="pet-like-pic" class="grid grid-cols-2  w-full gap-5">
+                    <div id="pet-like-pic" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 2xl:grid-cols-2 gap-5">
                 </div>
 
             </div>
@@ -152,10 +168,10 @@
                     <p>Openings hours: 9.00 AM - 5.00 PM</p>
                 </div>
                 <div class="flex flex-row gap-3 justify-center items-center lg:justify-start">
-                    <img src="images/fb.png" alt="">
-                    <img src="images/x.png" alt="">
-                    <img src="images/tube.png" alt="">
-                    <img src="images/insta.png" alt="">
+                    <img class="cursor-pointer" src="images/fb.png" alt="">
+                    <img class="cursor-pointer" src="images/x.png" alt="">
+                    <img class="cursor-pointer" src="images/tube.png" alt="">
+                    <img class="cursor-pointer" src="images/insta.png" alt="">
                 </div>
             </div>
             

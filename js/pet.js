@@ -47,7 +47,7 @@ const displayCategory = (categories) =>{
 
         `
             <button onclick = "loadCategoryImages('${item.category}'); sendValue('${item.category}')"   
-                class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg h-[5em] w-[8em] md:w-[12em] lg:w-[10em] xl:w-[12em] 2xl:w-[14em]
+                class="btn btn-xs sm:btn-sm md:btn-md lg:btn-lg h-[5em] w-[7.5em] md:w-[12em] lg:w-[9em] xl:w-[11em] 2xl:w-[13em]
                 rounded-3xl border-2 border-[#0e7a8126] text-2xl bg-white shadow-none duration-500 ease-linear focus:bg-[#0e7a811a] focus:rounded-full"> <img class = "w-14" 
                 src="${item.category_icon}" alt=""> ${item.category}
             </button>
@@ -98,7 +98,7 @@ const petContainer = (petContents) => {
 
 
             `
-                <div  class = "flex flex-col items-center justify-center p-8 rounded-2xl bg-gray-200 col-span-full row-span-full">
+                <div  class = "flex flex-col items-center justify-center p-8 rounded-2xl bg-gray-200 col-span-full row-span-full gap-8">
                     <img src="images/error.webp" alt="">
                     <h1 class = "text-3xl font-bold"> No Information Available </h1>
                     <p class = "w-[90%] font-semibold">
@@ -158,9 +158,9 @@ const petContainer = (petContents) => {
                     </div>
                 <div class = "flex flex-row justify-between items-center">
                 
-                    <button onclick = "likedImages('${content.image}')" class = "btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12"><img src="images/like.png" alt="" class = "w-8"></Button>
-                    <button onclick="showTimeModal()" class = "btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 text-xl font-semibold">Adopt</Button>
-                    <button onclick = "petDetails(${content.petId})" class = " btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 text-xl font-semibold">Details</Button>
+                    <button onclick = "likedImages('${content.image}')" class = "btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 hover:scale-110 duration-150 ease-linear"><img src="images/like.png" alt="" class = "w-8"></Button>
+                    <button onclick="showTimeModal()" class = "btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 text-xl font-semibold hover:scale-110 duration-150 ease-linear">Adopt</Button>
+                    <button onclick = "petDetails(${content.petId})" class = " btn border-2 border-[#0e7a8126] rounded-2xl w-[5em] h-12 text-xl font-semibold hover:scale-110 duration-150 ease-linear">Details</Button>
                 </div>
             </div>
         `;
@@ -262,7 +262,7 @@ const showTimeModal = () => {
 
     // Countdown
 
-function startCountdown() {
+const startCountdown = () => {
 
     let countdownTime = 3; 
     
@@ -270,24 +270,22 @@ function startCountdown() {
     countdownInterval = setInterval(() => {
     countdownTime--;
 
-    //  Update the countdown display
-
-    document.getElementById('countdown').innerHTML = countdownTime;
-    
-    if (countdownTime < 0) {
-      clearInterval(countdownInterval);  // Stop the countdown
-      closeModal();  
-    }
-    
-  }, 1000);
+        //  Update the countdown display
+        document.getElementById('countdown').innerHTML = countdownTime;
+        if (countdownTime === 0) {
+          clearInterval(countdownInterval);  // Stop the countdown
+          closeModal();  
+        }
+ 
+    }, 1000);
 }
 
     // close the modal
 
 const closeModal = () => {
 
-  document.getElementById('timer').close();  
-  clearInterval(countdownInterval); 
+    document.getElementById('timer').close();  
+    clearInterval(countdownInterval); 
   
 }
 
