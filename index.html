@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Pet Shop</title>
+    <title>Paws Kingdom</title>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css" rel="stylesheet" type="text/css"/>
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -13,7 +13,8 @@
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+    <link rel="shortcut icon" href="images/shop.png" type="image/x-icon">
 
   </head>
 
@@ -35,9 +36,9 @@
     </script>
 
 
-<body class="font-lato mt-12">
-    <main class="container mx-auto">
-        <div class="navbar bg-base-100">
+<body class="font-lato mt-12 mx-auto ">
+    <main class="container mx-auto p-5">
+        <div class="navbar bg-base-100 justify-center items-center">
             <div class="navbar-start gap-2">
               <img src="images/logo.webp" alt="">
               <p class="font-bold text-3xl">Peddy</p>
@@ -54,14 +55,15 @@
                     <img src="images/Frame 4.png" alt="">
                 </div>
             </div>
-          </div>
+        </div>
 
-        <section class="mt-12">
+        <section class="mt-12 ">
             <div class="flex flex-col justify-center items-center text-center gap-5">
                 <h2 class="text-2xl font-bold text-secondary">Bringing Families Together</h2>
                 <h1 class="text-4xl font-bold text-primary">Bringing Families Together</h1>
-                <p class="w-1/2 text-primary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
-                <button onclick="scrollToPets()" class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">View more</button>
+                <p class="w-[90%] text-primary">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <button onclick="scrollToPets()" class="btn bg-btn_colr text-white text-xl h-[3em] w-[8em] 
+                        hover:bg-btn_colr transition-all duration-300 ease-in-out hover:scale-110">View more</button>
                 <div class="mt-12">
                     <img src="images/pet.webp" alt="">
                 </div>
@@ -70,33 +72,34 @@
         
         <section class="mt-12">
             <div class="flex flex-col justify-center items-center text-center gap-5">
-                <h1 class="text-primary text-4xl font-bold">Adopt &nbsp; Your &nbsp;  Best &nbsp; Friend</h1>
-                <p class="text-secondary w-1/2">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
+                <h1 class="text-primary text-4xl font-bold w-[80%]">Adopt &nbsp; Your &nbsp;  Best &nbsp; Friend</h1>
+                <p class="text-secondary w-[90%]">It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a.</p>
             </div>
         </section>
         <section class="mt-16">
-            <div id="petsCategoryContainer" class="flex items-center justify-center space-x-12">
+            <div id="petsCategoryContainer" class="grid grid-cols-2 justify-items-center gap-5 lg:grid-cols-4 ">
             </div>
-            <div class="flex flex-row items-center justify-between mt-12">
-                <h1 class="text-2xl font-bold text-primary">Best Deal For you</h1>
-                <button id="sortBtn" onclick="sortPrice(id)" class="btn btn-xs bg-btn_colr text-white sm:btn-sm md:btn-md lg:btn-lg">Sort By Price</button>
+            <div id="sort-container" class="flex flex-row items-center justify-between mt-12 p-5">
+                <h1 class="text-3xl font-bold text-primary">Best Deal For you</h1>
+                <button id="categorySortBtn" onclick="sortPrice() ; sortPriceByCategory()" class="btn bg-btn_colr text-white text-xl h-[3em]
+                        hover:bg-btn_colr transition-all duration-300 ease-in-out hover:scale-110">Sort By Price</button>
             </div>
-            <div id="pets-shop" class="flex flex-row justify-center items-start mt-12 gap-8">
+            <div id="pets-shop" class="flex flex-col 2xl:flex-row justify-center items-center 2xl:items-start text-center mt-12 gap-8">
                 
+                <div id="pets-cards" class="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3 w-full md:w-[90%] lg:w-full"></div>
 
-                <div id="pets-cards" class="grid grid-cols-3 gap-8 w-[80%]">
+                <span id="spinner" class="hidden loading loading-spinner  loading-lg w-[3.5em]"></span>
+
+                <div id="vanish" class="h-[60vh] border-2 w-[47vh] md:w-[90vh] lg:w-[100vh] lg:h-[118vh] 2xl:w-[60vh] overflow-y-scroll rounded-2xl p-5">
+                    <h1 class="text-3xl font-bold mt-5 mb-5">Liked Pictures</h1>
+                    <div id="pet-like-pic" class="grid grid-cols-2  w-full gap-5">
                 </div>
-                <span id="spinner" class="hidden loading loading-spinner loading-lg"></span>
-                <div id="pet-like-pic" class="rounded-2xl grid grid-cols-2 grid-rows-1 w-[30%] gap-5">
-                
-                    
-                </div>
-    
+
             </div>
             
             
 
-            <!-- modal  -->
+            <!---------------- modal  ---------->
 
             <button id="shodModal" class="btn hidden" onclick="petModal.showModal()">open modal</button>
             <dialog id="petModal" class="modal">
@@ -112,15 +115,13 @@
             </dialog>
 
 
-            <!-- timer modal  -->
 
+            <!-------------- timer modal  ------------->
 
-
-            <!-- <button id="timeModal" class="btn " onclick="timer.showModal()">open modal</button> -->
 
             <button class="btn hidden" onclick="showTimeModal()">Open Modal</button>
       
-            <!-- Modal Structure -->
+            
             <dialog id="timer" class="modal">
               <div class="modal-box">
                 <div class="modal-action flex flex-col items-center justify-center gap-5">
@@ -138,19 +139,19 @@
 
     </main>
     <footer class="bg-primary mt-12">
-        <div class="flex flex-row justify-between items-center container mx-auto py-20">
+        <div class="flex flex-col lg:flex-row justify-between items-center py-20 gap-20 lg:p-20">
             <div class="space-y-5">
-                <div class="flex flex-row items-center justify-start gap-2">
+                <div class="flex flex-row items-center justify-center gap-2 lg:justify-start">
                     <img src="images/logo.webp" alt="">
                     <p class="font-bold text-3xl text-white">Peddy</p>
                 </div>
-                <div class="text-white space-y-5">
+                <div class="text-white space-y-5 text-center lg:text-start">
                     <p>Location: av. Washington 165, NY CA 54003</p>
                     <p>Phone: +31 85 964 47 25 </p>
                     <p>Email: info@yourdomain.com </p>
                     <p>Openings hours: 9.00 AM - 5.00 PM</p>
                 </div>
-                <div class="flex flex-row gap-3">
+                <div class="flex flex-row gap-3 justify-center items-center lg:justify-start">
                     <img src="images/fb.png" alt="">
                     <img src="images/x.png" alt="">
                     <img src="images/tube.png" alt="">
@@ -160,7 +161,7 @@
             
 
             <div class="text-white space-y-5">
-                <ul class="list-none space-y-5">
+                <ul class="list-none space-y-5 text-center ">
                     <h1 class="font-semibold text-xl">Useful Links</h1>
                     <li><a href=""></a>Home</li>
                     <li><a href=""></a>About Us</li>
@@ -169,10 +170,11 @@
                 </ul>
             </div>
 
-            <div class="text-white space-y-5">
+            <div class="text-white space-y-5 text-center">
                 <h1 class="font-bold text-xl mb-10">Drop a Message</h1>
                 <input type="text" placeholder="Enter your email" class="input input-bordered w-full rounded-2xl bg-gray-600 placeholder-white" />
-                <button class="btn btn-wide w-full bg-btn_colr border-none text-white text-lg rounded-2xl">Wide</button>
+                <button class="btn btn-wide w-full bg-btn_colr border-none text-white text-lg rounded-2xl
+                            hover:bg-btn_colr transition-all duration-300 ease-in-out hover:scale-110">Wide</button>
             </div>
 
         </div>
